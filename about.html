@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Jubilee Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #fff;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #fff;
+      color: #000;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      margin-right: 20px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:last-child {
+      margin-right: 0;
+    }
+
+    nav a:hover {
+      color: #007BFF;
+    }
+
+    .hero-image {
+      background-image: url('images/c.jpg');
+      height: 80vh;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      font-size: 4rem;
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .about-text {
+      max-width: 700px;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: #444;
+    }
+
+    .quote-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin: 60px 0;
+    }
+
+    .quote {
+      font-style: italic;
+      font-size: 1.4rem;
+      max-width: 500px;
+      color: #333;
+    }
+
+    .quote-author {
+      font-size: 0.9rem;
+      margin-top: 10px;
+      color: #777;
+    }
+
+    .quote-img {
+      max-width: 400px;
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+
+    .team-section {
+      margin-top: 80px;
+    }
+
+    .team-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    .team-description {
+      font-size: 1rem;
+      max-width: 700px;
+      margin-bottom: 40px;
+      color: #444;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .team-grid img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      text-align: center;
+      gap: 30px;
+      border-top: 1px solid #eee;
+      padding-top: 30px;
+    }
+
+    .stats h3 {
+      font-size: 1.5rem;
+      color: #000;
+    }
+
+    .stats p {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    footer {
+      background-color: #000;
+      color: #fff;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    .whatsapp-float, .top-btn {
+      position: fixed;
+      width: 50px;
+      height: 50px;
+      bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: white;
+      border-radius: 50%;
+      z-index: 999;
+      cursor: pointer;
+    }
+
+    .whatsapp-float {
+      right: 20px;
+      background-color: #25D366;
+      text-decoration: none;
+    }
+
+    .top-btn {
+      left: 20px;
+      background-color: #000000;
+    }
+
+    @media (max-width: 768px) {
+      .quote-section {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .quote-img {
+        margin-top: 20px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      .hero-text {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/logo.png" alt="Jubilee Logo">
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="kitchen.html">Jubilee Kitchen</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+  </nav>
+</header>
+
+<div class="hero-image">
+  <div class="hero-text">About Us</div>
+</div>
+
+<div class="container">
+  <h1>About Us.</h1>
+  <div class="about-text">
+    <p>Jubilee Events and Organising Company is a premium event management firm headquartered in Nairobi, Kenya. We specialize in full-service event planning, catering, entertainment, logistics, and media production, making us a one-stop partner for timeless event experiences.</p>
+    <p>Founded with a mission to bring elegance and excellence to every occasion, our team combines years of expertise in design, coordination, and execution. From corporate galas and weddings to private celebrations and public festivals — we manage it all with precision and creativity.</p>
+  </div>
+
+  <div class="quote-section">
+    <div>
+      <p class="quote">“Our work makes sense only if it is a faithful witness of its time.”</p>
+      <p class="quote-author">— Jean-Philippe Nuel, Director</p>
+    </div>
+    <img src="images/a.jpg" alt="Team Member Working" class="quote-img" />
+  </div>
+
+  <div class="team-section">
+    <h2>The Team.</h2>
+    <p class="team-description">
+      We believe that creativity, communication, and collaboration are the foundations of every great event. Our team is composed of designers, planners, coordinators, and storytellers who breathe life into your ideas and go beyond expectations.
+    </p>
+
+    <div class="team-grid">
+      <img src="images/a.jpg" alt="Team Member 1">
+      <img src="images/b.jpg" alt="Team Member 2">
+      <img src="images/c.jpg" alt="Team Member 3">
+      <img src="images/d.jpg" alt="Team Member 4">
+    </div>
+
+    <div class="stats">
+      <div>
+        <h3>600+</h3>
+        <p>Successful Events</p>
+      </div>
+      <div>
+        <h3>700+</h3>
+        <p>Corporate Clients</p>
+      </div>
+      <div>
+        <h3>1.2M</h3>
+        <p>Guests Served</p>
+      </div>
+      <div>
+        <h3>110+</h3>
+        <p>Venues Managed</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="max-width: 800px; margin: auto; text-align: center;">
+    <p><strong>Jubilee Events and Organising Company</strong></p>
+    <p>Crafting timeless moments with elegance and flair.</p>
+    <p>2443 Oak Ridge, Nairobi, Kenya</p>
+    <p>+254 790 781146</p>
+    <p><a href="mailto:support@jubileeevents.co.ke" style="color:#fff;">support@jubileeevents.co.ke</a></p>
+    <hr style="margin: 20px auto; max-width: 300px; border-color: #666;">
+    <p>&copy; 2025 Jubilee Events and Organising Company — All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- WhatsApp Icon -->
+<a href="https://wa.me/254790781146" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Back to Top -->
+<div class="top-btn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑</div>
+
+</body>
+</html>

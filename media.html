@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Media & Branding - Jubilee Events</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+      margin: 0;
+    }
+    .navbar {
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.8rem;
+      color: #000;
+    }
+    .navbar-nav .nav-link {
+      color: #333;
+      font-weight: 500;
+      margin-right: 20px;
+    }
+    .hero {
+      background-image: url('a.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+    .hero h1 {
+      z-index: 1;
+      font-size: 3.5rem;
+      font-weight: bold;
+    }
+    .explore-btn {
+      margin-top: 40px;
+      padding: 14px 35px;
+      font-size: 1.1rem;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      z-index: 1;
+      position: relative;
+    }
+    .services-section {
+      background-image: url('b.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 80px 0;
+    }
+    .section-title {
+      text-align: center;
+      color: #fff;
+      font-weight: bold;
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+    .service-card {
+      background: rgba(0,0,0,0.6);
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .service-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+    }
+    .service-card.clicked::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: 2px solid #00f0ff;
+      animation: pulseBorder 0.6s ease-out;
+      border-radius: 10px;
+      z-index: 10;
+    }
+    @keyframes pulseBorder {
+      0% { opacity: 0; transform: scale(1.1); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 999;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      text-decoration: none;
+    }
+    footer {
+      background-color: #111;
+      color: #fff;
+      padding: 40px 0;
+    }
+    .modal-body img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Jubilee Events</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Portfolio</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <h1>Media & Branding</h1>
+  <button class="explore-btn" onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' });">
+    Explore Our Media Services <i class="fas fa-arrow-down"></i>
+  </button>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services-section">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">What We Offer</h2>
+    <div class="row g-4">
+      <!-- Photo & Video -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up">
+        <div class="card service-card" onclick="animateClick(this)" data-bs-toggle="modal" data-bs-target="#modalPhoto">
+          <img src="photo-video.jpg" alt="Photo & Video">
+          <div class="card-body">
+            <h5 class="card-title">Photo & Video Coverage</h5>
+            <p>Capture every beautiful moment professionally.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Banners -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="card service-card" onclick="animateClick(this)" data-bs-toggle="modal" data-bs-target="#modalBanners">
+          <img src="banners.jpg" alt="Banners">
+          <div class="card-body">
+            <h5 class="card-title">Banners</h5>
+            <p>High-quality printed banners for visibility.</p>
+          </div>
+        </div>
+      </div>
+      <!-- T-Shirts -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="card service-card" onclick="animateClick(this)" data-bs-toggle="modal" data-bs-target="#modalTShirts">
+          <img src="tshirt.jpg" alt="T-Shirts">
+          <div class="card-body">
+            <h5 class="card-title">T-Shirts</h5>
+            <p>Branded t-shirts perfect for events & teams.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Programs -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="card service-card" onclick="animateClick(this)" data-bs-toggle="modal" data-bs-target="#modalPrograms">
+          <img src="programs.jpg" alt="Event Programs">
+          <div class="card-body">
+            <h5 class="card-title">Event Programs</h5>
+            <p>Well-designed programs for smooth flow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modals -->
+<div class="modal fade" id="modalPhoto"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Photo & Video Coverage</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="row"><div class="col-md-5"><img src="photo-video-detail.jpg"></div><div class="col-md-7"><p>We provide professional photo and video coverage using high-end equipment and skilled photographers to ensure your moments are captured beautifully and memorably.</p></div></div></div></div></div></div>
+
+<div class="modal fade" id="modalBanners"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Banners</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="row"><div class="col-md-5"><img src="banners-detail.jpg"></div><div class="col-md-7"><p>Custom-designed and professionally printed banners perfect for promotions, directions, and branding your event space with style and visibility.</p></div></div></div></div></div></div>
+
+<div class="modal fade" id="modalTShirts"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">T-Shirts</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="row"><div class="col-md-5"><img src="tshirt-detail.jpg"></div><div class="col-md-7"><p>Get customized t-shirts printed for your team, crew, or guests. We offer top-quality printing and a wide range of sizes and styles.</p></div></div></div></div></div></div>
+
+<div class="modal fade" id="modalPrograms"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Event Programs</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="row"><div class="col-md-5"><img src="programs-detail.jpg"></div><div class="col-md-7"><p>We design and print event programs that clearly communicate your schedule, speakers, activities, and special announcements in a visually appealing format.</p></div></div></div></div></div></div>
+
+<!-- Back to Top -->
+<button id="backToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/254790781146" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Footer -->
+<footer>
+  <div class="container text-center">
+    <h5>Jubilee Events and Organising Company</h5>
+    <p>2443 Oak Ridge, Nairobi, Kenya | +254 790 781146<br>
+    <a href="mailto:support@jubileeevents.co.ke" class="text-white">support@jubileeevents.co.ke</a></p>
+    <p class="mt-3 mb-0">&copy; 2025 Jubilee Events and Organising Company — All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+  function animateClick(card) {
+    card.classList.add('clicked');
+    setTimeout(() => card.classList.remove('clicked'), 600);
+  }
+</script>
+</body>
+</html>

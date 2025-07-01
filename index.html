@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-store"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jubilee Events Organising Company</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      background: linear-gradient(to bottom right, #fdfbfb, #ebedee);
+    }
+
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      background: #e91e1e;
+      width: 0%;
+      z-index: 9999;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: #e71b1b;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    #hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url('images/c.jpg') center center fixed;
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #hero h1 {
+      font-size: 3.5em;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    #hero p {
+      font-size: 1.4em;
+      max-width: 700px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      background: #fff;
+      color: #e91e63;
+      padding: 15px 35px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: 0.3s ease;
+      font-size: 1.1em;
+      margin-top: 40px;
+    }
+
+    .btn:hover {
+      background: #1140c2;
+      color: white;
+      box-shadow: 0 0 15px #e91e1e;
+    }
+
+    section { padding: 100px 40px; }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.2em;
+      color: #e9a91e;
+    }
+
+    .bg-services {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('images/a.jpg') center center fixed;
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: white;
+    }
+
+    .service-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .service-box {
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      width: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .service-box:hover { transform: scale(1.03); }
+
+    .image-box {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .info h3 { color: #e40808; margin-bottom: 10px; }
+
+    .learn-more-btn {
+      margin: 40px auto 0;
+      display: block;
+      background: #fff;
+      color: #1e3de9;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      max-width: 180px;
+      text-align: center;
+    }
+
+    .learn-more-btn:hover {
+      background: #1842cf;
+      color: #fff;
+      box-shadow: 0 0 15px #d61111;
+    }
+
+    #portfolio .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    #portfolio img {
+      width: 100%;
+      border-radius: 15px;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    /* Collage */
+    #collage .collage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      padding: 20px 0;
+    }
+
+    #collage .collage-grid img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    #collage .collage-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 60px;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10000;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0 }
+      to { opacity: 1 }
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .whatsapp-float, .top-btn {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 20px;
+      color: white;
+      position: fixed;
+      bottom: 20px;
+      z-index: 999;
+      text-decoration: none;
+    }
+
+    .whatsapp-float {
+      right: 20px;
+      background: #25D366;
+    }
+
+    .top-btn {
+      left: 20px;
+      background: #d80f0f;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      #hero h1 { font-size: 2em; }
+      #hero p { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<header>
+  <div class="logo">
+    <img src="images/logo.png" alt="Jubilee Logo">
+  </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="about.html">Jubilee Kitchen</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+  </nav>
+</header>
+
+<section id="hero">
+  <h1 data-aos="zoom-in">Jubilee Events Organising Company</h1>
+  <p data-aos="fade-up">For consultation, management and Supply of all Events needs and All types of Events</p>
+  <a href="#services" class="btn" data-aos="fade-up" data-aos-delay="200">Book Us Today</a>
+</section>
+
+<section id="services" class="bg-services" data-aos="fade-up">
+  <h2>Our Services</h2>
+  <div class="service-cards">
+    <div class="service-box">
+      <div class="image-box" style="background-image: url('images/d.jpg');"></div>
+      <div class="info">
+        <h3>Weddings</h3>
+        <p>Stylish ceremonies & receptions handled end‑to‑end.</p>
+      </div>
+    </div>
+    <div class="service-box">
+      <div class="image-box" style="background-image: url('images/e.jpg');"></div>
+      <div class="info">
+        <h3>Corporate Events</h3>
+        <p>Launches, conferences, VIP corporate gatherings.</p>
+      </div>
+    </div>
+    <div class="service-box">
+      <div class="image-box" style="background-image: url('images/f.jpg');"></div>
+      <div class="info">
+        <h3>Birthdays</h3>
+        <p>Themed parties with attention to design & detail.</p>
+      </div>
+    </div>
+  </div>
+  <a href="services.html" class="learn-more-btn">Learn More</a>
+</section>
+
+<section id="portfolio" data-aos="fade-up">
+  <h2>Portfolio</h2>
+  <div class="grid">
+    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb" alt="Event 1">
+    <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6" alt="Event 2">
+    <img src="https://images.unsplash.com/photo-1568051243851-98cfdc7735a5" alt="Event 3">
+    <img src="https://images.unsplash.com/photo-1579631347633-1b45a7b16d52" alt="Event 4">
+  </div>
+</section>
+
+<section id="collage" data-aos="fade-up">
+  <h2>Event Moments Collage</h2>
+  <div class="collage-grid">
+    <img src="images/img1.jpg" onclick="openModal(0)" alt="">
+    <img src="images/img2.jpg" onclick="openModal(1)" alt="">
+    <img src="images/img3.jpg" onclick="openModal(2)" alt="">
+    <img src="images/img4.jpg" onclick="openModal(3)" alt="">
+    <img src="images/img5.jpg" onclick="openModal(4)" alt="">
+    <img src="images/img6.jpg" onclick="openModal(5)" alt="">
+    <img src="images/img7.jpg" onclick="openModal(6)" alt="">
+    <img src="images/img8.jpg" onclick="openModal(7)" alt="">
+    <img src="images/img9.jpg" onclick="openModal(8)" alt="">
+    <img src="images/img10.jpg" onclick="openModal(9)" alt="">
+  </div>
+</section>
+
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<footer>
+  <h4>Jubilee Events and Organising Company</h4>
+  <p>Crafting timeless moments with elegance and flair.</p>
+  <p>2443 Oak Ridge, Nairobi, Kenya</p>
+  <p>+254 790 781146</p>
+  <p><a href="mailto:support@jubileeevents.co.ke" style="color:white; text-decoration: underline;">support@jubileeevents.co.ke</a></p>
+  <hr style="margin: 20px auto; max-width: 300px; border-color: #777;">
+  <p>&copy; 2025 Jubilee Events and Organising Company — All rights reserved.</p>
+</footer>
+
+<a href="https://wa.me/254790781146" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<div class="top-btn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000 });
+
+  window.addEventListener('scroll', () => {
+    const scroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('progress-bar').style.width = `${(scroll / height) * 100}%`;
+  });
+
+  const images = [
+    "images/img1.jpg", "images/img2.jpg", "images/img3.jpg", "images/img4.jpg", "images/img5.jpg",
+    "images/img6.jpg", "images/img7.jpg", "images/img8.jpg", "images/img9.jpg", "images/img10.jpg"
+  ];
+  let modalIndex = 0;
+  let interval;
+
+  function openModal(index) {
+    modalIndex = index;
+    document.getElementById("imageModal").style.display = "block";
+    showImage();
+    interval = setInterval(() => {
+      modalIndex = (modalIndex + 1) % images.length;
+      showImage();
+    }, 3000);
+  }
+
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+    clearInterval(interval);
+  }
+
+  function showImage() {
+    document.getElementById("modalImage").src = images[modalIndex];
+  }
+</script>
+</body>
+</html>
